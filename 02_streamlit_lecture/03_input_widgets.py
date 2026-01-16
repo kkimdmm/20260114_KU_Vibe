@@ -38,7 +38,7 @@ st.subheader("여러 줄 입력")
 message = st.text_area(
     "메시지를 입력하세요:",
     placeholder="여기에 메시지를 작성하세요...",
-    height=150
+    height=150 #높이값
 )
 if message:
     st.info(f"입력한 글자 수: {len(message)}자")
@@ -289,3 +289,69 @@ with st.expander("💡 과제 2 예시 답안"):
             st.warning("📊 판정: 과체중")
         else:
             st.error("📊 판정: 비만")
+
+
+import streamlit as st
+
+st.set_page_config(page_title="BMI 계산기", page_icon="⚖️")
+
+
+
+# 입력 폼
+with st.form(key="bmi_form"):
+    st.subheader("BMI 계산기")
+    # 키 입력 (cm)
+    height = st.number_input(
+        "키 (cm):",
+        min_value=100.0,
+        max_value=250.0,
+        value=170.0,
+        step=0.1,
+        
+    )
+
+    # 몸무게 입력 (kg)
+    weight = st.number_input(
+        "몸무게 (kg):",
+        min_value=30.0,
+        max_value=200.0,
+        value=65.0,
+        step=0.1,
+        
+    )
+
+    # 계산하기 버튼
+    submit = st.form_submit_button(label="BMI 계산하기",type='primary')
+
+if submit:
+    # 유효성 검사
+    if height <= 0 or weight <= 0:
+        st.error("키와 몸무게를 올바르게 입력하세요.")
+    else:
+        # cm → m 변환
+        height_m = height / 100.0
+        bmi = weight / (height_m ** 2)
+        bmi_rounded = round(bmi, 1)
+
+        # BMI 판정
+        if bmi < 18.5:
+            status = "저체중"
+        elif 18.5 <= bmi <= 22.9:
+            status = "정상"
+        elif 23 <= bmi <= 24.9:
+            status = "과체중"
+        else:  # bmi >= 25
+            status = "비만"
+
+        # 결과 표시
+        st.subheader("결과")
+        st.write(f"당신의 BMI는 **{bmi_rounded}** 입니다.")
+        st.write(f"판정: **{status}**")
+
+        # 기준표
+        st.markdown("---")
+        st.markdown("#### BMI 기준")
+        st.table({
+            "구분": ["저체중", "정상", "과체중", "비만"],
+            "BMI": ["< 18.5", "18.5 ~ 22.9", "23 ~ 24.9", "≥ 25"]
+        })

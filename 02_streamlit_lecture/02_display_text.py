@@ -13,7 +13,7 @@ st.header("1. 제목과 헤더")
 st.subheader("이것은 소제목입니다")
 
 st.write("""
-Streamlit은 다양한 방식으로 텍스트를 출력할 수 있습니다.
+Streamlit은 다양한 방식으로 텍스트를 출력할 수 있습니다.\n
 각 함수의 용도를 이해하고 적절히 사용하는 것이 중요합니다.
 """)
 
@@ -107,10 +107,10 @@ st.markdown("> 누구나 코딩을 할 수 있다. - 박태근")
 
 # 인터넷상 이미지
 st.caption("인터넷상 이미지 표시")
-st.image("https://i0.wp.com/magazine.contenta.co/wp-content/uploads/2021/02/1-1.jpg?ssl=1")
+st.image("https://th.bing.com/th/id/OIP.Y9h80DtXEhUNVqMCm8cn8wHaEJ?w=306&h=180&c=7&r=0&o=7&pid=1.7&rm=3", use_container_width=True)
 
 # 이미지 사이즈를 화면에 맞추고싶다면? 강제로 늘릴 수 있음
-st.image("https://placehold.co/300x300")
+st.image("https://th.bing.com/th/id/OIP.Y9h80DtXEhUNVqMCm8cn8wHaEJ?w=306&h=180&c=7&r=0&o=7&pid=1.7&rm=3", use_container_width=True)
 # st.image("https://placehold.co/300x300", use_container_width=True)
 
 # 로컬 이미지
@@ -149,3 +149,81 @@ with st.expander("💡 예시 답안 보기"):
     """)
     
     st.info("이 기술은 2027년 상용화될 예정입니다.")
+
+
+    import streamlit as st
+
+# 페이지 기본 설정 (선택)
+st.set_page_config(
+    page_title="뉴스 기사 데모",
+    page_icon="📰",
+    layout="centered"
+)
+
+# 제목
+st.title("서울시, 도심 전기 자율주행 셔틀 시범 운행 시작")
+
+# 작성자 & 날짜
+st.caption("작성자: 이지은 기자 | 2026-01-16")
+
+# 이미지
+st.image(
+    "https://images.pexels.com/photos/799443/pexels-photo-799443.jpeg",
+    caption="서울 도심을 달리는 전기 자율주행 셔틀 (자료 사진)",
+    use_column_width=True
+)
+
+# 본문 내용
+st.markdown(
+"""
+서울시는 16일, 도심 주요 구간을 연결하는 **전기 자율주행 셔틀 시범 운행**을 공식 발표했다.  
+이번 시범 사업은 탄소 배출을 줄이고, 대중교통 사각지대를 해소하기 위한 목적으로 추진된다.
+
+시는 우선 광화문–시청–종로 일대 약 5km 구간에서 자율주행 셔틀을 운행하며,  
+운행 시간은 평일 오전 9시부터 오후 6시까지다. 초기에는 안전 요원이 탑승해  
+비상 상황에 대비하며, 단계적으로 완전 무인 운행을 검토할 예정이다.
+
+서울시 스마트교통과 관계자는 다음과 같이 밝혔다.
+
+> “전기 자율주행 셔틀은 교통 혼잡과 사고를 줄이는 동시에  
+> 시민들에게 새로운 이동 경험을 제공할 것입니다.  
+> 시범 운영 결과를 바탕으로 2027년부터 노선을 확대할 계획입니다.”
+
+한편, 시는 모바일 앱을 통해 사전 예약을 받은 뒤 무료로 탑승할 수 있도록 할 방침이며,  
+시범 운행 기간 동안 수집된 데이터를 분석해 **교통 패턴, 안전성, 시민 만족도** 등을 종합 평가할 예정이다.
+"""
+)
+
+# 관련 정보 박스
+st.info(
+"""
+### 관련 정보
+- 시범 운행 기간: 2026년 2월 1일 ~ 2026년 7월 31일  
+- 운행 구간: 광화문역–시청역–종각역 일대 순환  
+- 탑승 요금: 시범 기간 무료 (앱 사전 예약 필수)  
+- 이용 방법:  
+  1. ‘서울 스마트 모빌리티’ 앱 다운로드  
+  2. 회원 가입 후 ‘자율주행 셔틀’ 메뉴 선택  
+  3. 원하는 시간대와 정류장 예약
+"""
+)
+
+# 코드/데이터 예시
+st.code(
+"""
+import pandas as pd
+
+# 서울시 자율주행 셔틀 일별 이용 통계 (가상 데이터)
+data = {
+    "date": ["2026-02-01", "2026-02-02", "2026-02-03", "2026-02-04"],
+    "total_rides": [320, 450, 510, 488],
+    "avg_wait_time_min": [4.2, 3.8, 3.5, 3.9],
+    "satisfaction_score": [4.6, 4.7, 4.5, 4.8],  # 5점 만점
+}
+
+df = pd.DataFrame(data)
+print(df)
+""",
+language="python"
+)
+
