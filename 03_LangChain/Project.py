@@ -90,6 +90,7 @@ def split_text(docs):
 def create_vectorstore(chunks, api_key):
     """
     [Embedding & VectorStore] 임베딩 생성 및 FAISS 저장소 구축
+
     """
     # model 이름 수정: text_embedding... -> text-embedding... (하이픈 사용)
     # openai_api_key 직접 전달
@@ -196,3 +197,5 @@ if query := st.chat_input("질문을 입력하세요..."):
                 st.error(f"답변 생성 중 오류가 발생했습니다: {e}")
     else:
         st.warning("먼저 문서를 업로드하고 '초기화' 버튼을 눌러주세요.")
+
+        
