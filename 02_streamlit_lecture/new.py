@@ -185,7 +185,7 @@ with col2:
                 )
                 st.video(st.session_state["random_video_url"])
 
-                st.video(st.session_state["random_video_url"])
+                
         else:
             st.warning("이 부위에 등록된 영상이 없어요. videos_all.txt 내용을 확인해 주세요.")
 
